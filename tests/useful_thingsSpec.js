@@ -91,16 +91,16 @@ describe('ut.removeExtraSpaces', function() {
     });
 });
 
-describe('ut.removeAllExtraSpaces', function() {
-    var $el = $(
-        "<div>" +
-            "<span>foo_</span>\n     <span class='remove_extra'></span>       \n<span>bar</span>" +
-            " <span>foo_</span>\n     <span class='remove_extra'></span>       \n<span>bar</span>" +
-        "</div>");
-    var $remove_extra = $el.find('.remove_extra');
-    ut.removeAllExtraSpaces($remove_extra);
-    expect($el.text()).toBe('foo_bar foo_bar');
-});
+//describe('ut.removeAllExtraSpaces', function() {
+    //var $el = $(
+        //"<div>" +
+            //"<span>foo_</span>\n     <span class='remove_extra'></span>       \n<span>bar</span>" +
+            //" <span>foo_</span>\n     <span class='remove_extra'></span>       \n<span>bar</span>" +
+        //"</div>");
+    //var $remove_extra = $el.find('.remove_extra');
+    //ut.removeAllExtraSpaces($remove_extra);
+    //expect($el.text()).toBe('foo_bar foo_bar');
+//});
 
 describe('ut.removeElFromArray', function() {
     it('remove', function() {

@@ -1,9 +1,9 @@
 {
-    "devDependencies": {
-      "karma": "~0.10.1"
-    },
-
-    "scripts": {
-       "test": "./node_modules/.bin/karma start tests/karma.conf.js --single-run --browsers PhantomJS"
-    }
+  "devDependencies": {
+    "karma": "~0.10.1",
+    "karma-coverage": "~0.2.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start tests/karma.conf.js --single-run --browsers PhantomJS"
+  }
 }

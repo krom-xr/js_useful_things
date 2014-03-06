@@ -259,9 +259,10 @@ ut.waitUntil = function (expression_callback, callback) {
 ut.removeExtraSpaces = function(el) {
     var next = el.nextSibling;
     var prev = el.previousSibling;
-    if (next.nodeType === 3) { next.remove(); }
-    if (prev.nodeType === 3) { prev.remove(); }
-    el.remove();
+    var pnode = el.parentNode;
+    if (next.nodeType === 3) { pnode.removeChild(next);  }
+    if (prev.nodeType === 3) { pnode.removeChild(prev);  }
+    pnode.removeChild(el);
 };
 ut.removeAllExtraSpaces = function(el_list) {
     for (var i = 0; i < el_list.length; i++) {
