@@ -1,0 +1,9 @@
+{
+    "name": "useful_things",
+    "version": "0.0.1",
+    "main": "src/useful_things.js",
+    "ignore": [
+        "tests",
+        ".gitignore"
+    ]
+}
