@@ -111,7 +111,7 @@ ut.detect = function (iter_object, fn) {
     return result;
 };
 
-ut.trim = function(trim_str) {
+ut._trim_if_str = function(trim_str) {
     if (typeof trim_str === "string") {
         return trim_str.trim();
     }
@@ -138,7 +138,7 @@ ut.getUrlParam = function (url, param) {
 /* возвращает объект где ключи соответствуют гет параметрам в строке url */
 ut.getUrlParams = function(url) {
     var params = url.split('?')[1];
-    if (!ut.trim(params)) { return; }
+    if (!ut._trim_if_str(params)) { return; }
 
     var result = {},
         splitted_params = params.split("&");
@@ -294,7 +294,7 @@ ut.cookie = {
         var value;
         var splitted_cookie = document.cookie.split(";");
         for (var i = 0; i < splitted_cookie.length; i++) {
-            var keyval = ut.trim(splitted_cookie[i]);
+            var keyval = ut._trim_if_str(splitted_cookie[i]);
             
             if (keyval.split('=')[0] === key) {
                 value = keyval.split('=')[1];
