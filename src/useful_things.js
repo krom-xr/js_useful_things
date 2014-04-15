@@ -19,11 +19,6 @@ String.prototype.supplant = function (o) {
     );
 };
 
-/* префикс для внутренних кастомных утилит команды strana-moya
- * использование:
- * ut.some_function = function(...){...};
- * ut.some_function();
- * */
 var ut = {};
 
 /**
@@ -96,7 +91,7 @@ ut.insertAtCursor = function (myField, myValue) {
        });
        //item = 4
  */
-ut.detect = function (iter_object, fn) {
+ut._detect = function (iter_object, fn) {
     var result = false;
 
     for (var i = 0; i < iter_object.length; i++) {
@@ -111,13 +106,6 @@ ut.detect = function (iter_object, fn) {
     return result;
 };
 
-ut._trim_if_str = function(trim_str) {
-    if (typeof trim_str === "string") {
-        return trim_str.trim();
-    }
-    return trim_str;
-};
-
 /*
  * возвращает значение гет параметра из урл адреса.
  * url - строка урл
@@ -130,7 +118,7 @@ ut.getUrlParam = function (url, param) {
     var params = url.split('#')[0].split('?')[1];
     if (!params) { return; }
     params = params.split("&");
-    var result = ut.detect(params, function (val) { return val.split('=')[0] === param; });
+    var result = ut._detect(params, function (val) { return val.split('=')[0] === param; });
     if (!result) { return; }
     return result.split('=')[1] || '';
 };
@@ -138,7 +126,7 @@ ut.getUrlParam = function (url, param) {
 /* возвращает объект где ключи соответствуют гет параметрам в строке url */
 ut.getUrlParams = function(url) {
     var params = url.split('?')[1];
-    if (!ut._trim_if_str(params)) { return; }
+    if (params === undefined || !params.trim()) { return; }
 
     var result = {},
         splitted_params = params.split("&");
@@ -294,7 +282,7 @@ ut.cookie = {
         var value;
         var splitted_cookie = document.cookie.split(";");
         for (var i = 0; i < splitted_cookie.length; i++) {
-            var keyval = ut._trim_if_str(splitted_cookie[i]);
+            var keyval = splitted_cookie[i].trim();
             
             if (keyval.split('=')[0] === key) {
                 value = keyval.split('=')[1];
