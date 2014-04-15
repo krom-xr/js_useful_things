@@ -51,6 +51,13 @@ describe('ut.getUrlParams', function() {
         var url = "http://yandex.ru?foo=foo&bar";
         var params = ut.getUrlParams(url);
         expect(params.foo === 'foo' && params.bar === '').toBe(true);
+
+
+    });
+    it('набор пораметров. но один параметр пустой=', function() {
+        var url = "http://yandex.ru?foo=foo&bar=";
+        var params = ut.getUrlParams(url);
+        expect(params.foo === 'foo' && params.bar === '').toBe(true);
     });
     it('empty params', function() {
         var params = ut.getUrlParams("http://yandex.ru");

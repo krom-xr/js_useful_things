@@ -146,7 +146,7 @@ ut.getUrlParams = function(url) {
     for (var i = 0; i < splitted_params.length; i++) {
         var splitted = splitted_params[i];
         splitted = splitted.split('=');
-        result[splitted[0]] = decodeURIComponent(splitted[1]);
+        result[splitted[0]] = splitted[1] ? decodeURIComponent(splitted[1]) : "";
     }
     return result;
 };
